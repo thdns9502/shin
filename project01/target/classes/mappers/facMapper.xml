@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.dong.empMapper">
+
+	<!-- 전체 사원 수 조회 -->
+	 <select id="cnt" resultType="int">
+      select count(*) from emp
+   </select>
+	
+
+	<!-- 전체 사원 조회 -->
+	<select id="listAll" resultType="kr.co.dong.domain.EmpVO">
+		select * from emp
+	</select>
+
+	  <!-- 사원번호로 사원조회 -->
+   <select id="selectOne" resultType="kr.co.dong.domain.EmpVO">
+      select * from emp
+       where empno = #{empno}
+   </select>
+
+   <!-- 사원추가 -->
+   <insert id="insert">
+    insert into emp
+   	 values(#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno})
+</insert>
+	
+	<!-- 사원수정 -->
+	<update id="update">
+    update emp set ename=#{ename}, job=#{job}, mgr=#{mgr}, hiredate=#{hiredate}, sal=#{sal}, comm=#{comm}, deptno=#{deptno}
+   	 where empno=#{empno}
+</update>
+	
+	<!-- 사원삭제 -->
+	<delete id="delete">
+		delete from emp where empno=#{empno}
+	</delete>
+	
+	
+
+</mapper>
